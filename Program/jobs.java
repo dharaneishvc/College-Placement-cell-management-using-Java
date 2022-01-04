@@ -6,6 +6,7 @@ class Company
 }
 class Jobs
 {
+	public Company Companylink;
 	public int Job_ID;
 	public String role;
 	public String[] Eligible_Branches;

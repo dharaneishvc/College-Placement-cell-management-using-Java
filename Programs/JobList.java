@@ -26,8 +26,6 @@ public class JobList
     }
 
 
-
-
     public void printjobs(String job) {
         for (Jobs job1 : jobslist) {
             if (job1.getJobName().equals(job)) {

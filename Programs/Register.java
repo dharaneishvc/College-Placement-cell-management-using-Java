@@ -29,8 +29,6 @@ public class Register {
         return (m.find() && m.group().equals(str))? str: "Invalid Mobile Number";
     }
 
-
-
     public static String isEmValid(String str) {
         Pattern p = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
         Matcher m = p.matcher(str);
@@ -77,5 +75,6 @@ public class Register {
         String newPassword = sc.nextLine();
         this.password = newPassword;
         u.resetPassword(newPassword);
+        sc.close();
     }
 }

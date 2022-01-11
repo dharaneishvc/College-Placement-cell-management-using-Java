@@ -81,7 +81,7 @@ public class PersonalDetails {
                 System.out.println("Invalid choice");
                 break;
         }
-
+        sc.close();
 
     }
 }

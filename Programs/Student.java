@@ -36,6 +36,7 @@ public class Student {
             System.out.println(jobs2);
        }
     }
+
     public void showPersonalDetails(){
         System.out.println(pd.toString());
     }

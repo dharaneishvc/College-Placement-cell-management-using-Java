@@ -11,7 +11,6 @@ public class Credentials {
     List<User> listOfUsers = new ArrayList<>();
 
     {
-
         listOfUsers.add(new User("user1", "password1"));
         listOfUsers.add(new User("user2", "password2"));
         listOfUsers.add(new User("user3", "password3"));

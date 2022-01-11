@@ -76,5 +76,6 @@ public class EducationalDetails {
                 System.out.println("Invalid choice");
                 break;
         }
+        sc.close();
     }
 }

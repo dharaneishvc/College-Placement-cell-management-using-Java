@@ -71,7 +71,7 @@ public class Driver {
                         } else {
                             System.out.println("Your passwords do not match");
                         }
-                    }while(true)
+                    }while(true);
                     User user1 = new User(register.getRollNumber(),register.getPassword());
                     lgn.addUser(user1);
                 }

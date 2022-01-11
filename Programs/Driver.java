@@ -50,7 +50,7 @@ public class Driver {
                     System.out.println("Type mismatch or any other exception" + e+" Action Aborted.");
                 }
                 {
-                    while(!((register.getPassword().equals(register.getPasswordAgain())))) {
+                    do{
                         try
                         {
                         System.out.println("Enter your password.(Press enter at last):");
@@ -71,7 +71,7 @@ public class Driver {
                         } else {
                             System.out.println("Your passwords do not match");
                         }
-                    }
+                    }while(true)
                     User user1 = new User(register.getRollNumber(),register.getPassword());
                     lgn.addUser(user1);
                 }

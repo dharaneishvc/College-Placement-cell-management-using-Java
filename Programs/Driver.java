@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Driver {
     public static void main(String[] args) {
-        try
+    
         Register register = new Register();
         EducationalDetails ed = new EducationalDetails();
         PersonalDetails pd = new PersonalDetails();

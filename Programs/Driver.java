@@ -50,7 +50,7 @@ public class Driver {
                     System.out.println("Type mismatch or any other exception" + e+" Action Aborted.");
                 }
                 {
-                    do {
+                    while(!((register.getPassword().equals(register.getPasswordAgain())))) {
                         try
                         {
                         System.out.println("Enter your password.(Press enter at last):");
@@ -71,7 +71,7 @@ public class Driver {
                         } else {
                             System.out.println("Your passwords do not match");
                         }
-                    } while (true);
+                    }
                     User user1 = new User(register.getRollNumber(),register.getPassword());
                     lgn.addUser(user1);
                 }
@@ -140,9 +140,15 @@ public class Driver {
                 if (lgn.checkCredentials()) {
                     lgn.printLoggedInUser();
                     Student student = new Student(pd, ed, register, user);
-                    do {
+                    int choice3=0;
+                    while(choice3 != 7) {
                         System.out.println("Enter 1 to Edit your details\nEnter 2 to See List of Job Opportunities\nEnter 3 to Add Job to Application \nEnter 4 to Remove Job from Application  \nEnter 5 to View Your Job Applications \nEnter 6 to View Companies \nEnter 7 to Logout and Exit");
-                        int choice3 = sc.nextInt();
+                        choice3 = sc.nextInt();
+                        while(choice3>7 || choice3<1)
+                        {
+                            System.out.println("Error. Enter correct value (1-7):");
+                            choice3 = sc.nextInt();
+                        }
                         if (choice3 == 1) {
                             System.out.println("Enter 1 to View your details\n Enter 2 to Edit your personal details\n Enter 3 to Edit your educational details\n Enter 4 to Reset your password");
                             int choice4 = sc.nextInt();
@@ -226,7 +232,7 @@ public class Driver {
                             System.out.println("Logged Out Successfully");
                             break;
                         }
-                    } while (true);
+                    };
                 } else {
                     System.out.println("Invalid Credentials");
                 }
@@ -234,12 +240,17 @@ public class Driver {
                 lgn.readCredentials();
                 if (lgn.checkCredentials()) {
                     lgn.printLoggedInUser();
-                    do {
-                        int choice4;
+                    int choice4=0;
+                    while(choice4 != 8) {
                         System.out.println("Enter 1 to view Users List \nEnter 2 to view Job Lists \nEnter 3 to view Company Lists \nEnter 4 to Add Job \nEnter 5 to Add Company \nEnter 6 to Remove Job \nEnter 7 to Remove Company \nEnter 8 to Logout");  
                         try
                         {
                             choice4 = sc.nextInt();
+                            while(choice4>8 && choice4<1)
+                            {
+                                System.out.println("Error! Enter correct value(1-8):");
+                                choice4 = sc.nextInt();
+                            }
                         if (choice4 == 1) {
                             lgn.printListOfUsers();
                         } else if (choice4 == 2) {
@@ -317,7 +328,7 @@ public class Driver {
                         System.out.println("Type mismatch or Some Exception happened. Aborting"+e);
                     }
 
-                    } while (true);
+                    };
                 }
                 else
                 {

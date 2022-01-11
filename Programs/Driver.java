@@ -11,7 +11,7 @@ public class Driver {
         CompanyList companyList = new CompanyList();
         Login lgn = new Login(register.getRollNumber(), register.getPassword());
         
-        int choice = 0;               
+        int choice = 0;     
         while(choice!=4) {
             System.out.println("Welcome to Placement Support System");
             System.out.println("Enter 1 - if you are a New User \nEnter 2 - if you are an Existing User \nEnter 3 - if you are an Admin \nEnter 4 - if you want to exit");
@@ -242,7 +242,7 @@ public class Driver {
                     lgn.printLoggedInUser();
                     int choice4=0;
                     while(choice4 != 8) {
-                        System.out.println("Enter 1 to view Users List \nEnter 2 to view Job Lists \nEnter 3 to view Company Lists \nEnter 4 to Add Job \nEnter 5 to Add Company \nEnter 6 to Remove Job \nEnter 7 to Remove Company \nEnter 8 to Logout");  
+                        System.out.println(" Enter 1 to view Users List \nEnter 2 to view Job Lists \nEnter 3 to view Company Lists \nEnter 4 to Add Job \nEnter 5 to Add Company \nEnter 6 to Remove Job \nEnter 7 to Remove Company \nEnter 8 to Logout");  
                         try
                         {
                             choice4 = sc.nextInt();

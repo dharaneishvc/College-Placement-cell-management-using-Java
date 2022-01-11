@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompanyList
+public class CompanyList extends Lists
 {
    List<Company> companies= new ArrayList<>();
 
@@ -17,12 +17,16 @@ public class CompanyList
 
     public void printCompanies()
     {
-        for(Company company : companies)
+        if ((companies.size())==0)
         {
-            System.out.println(company.toString());
+            System.out.println("No Companies Found");
+        }else {
+            for(Company company : companies)
+            {
+                System.out.println(company.toString());
+            }
         }
     }
-
 
     public void removeCompany(String companyID)
     {
@@ -51,6 +55,24 @@ public class CompanyList
             }
         }
         return null;
+    }
+
+    public  int searchCompany(String companyID)
+    {
+        int a=0;
+        for (Company company : companies)
+        {
+            if(company.getCompany_ID().equals(companyID))
+            {
+                a=1;
+                break;
+            }
+        }
+        if(a==0)
+        {
+            System.out.println("Company Not Found");
+        }
+        return a;
     }
 
     public boolean checkCompany(String companyname)
@@ -115,5 +137,14 @@ public class CompanyList
            }
        }
    }
+
+
+public void clear() {
+    companies.clear();
 }
 
+public boolean isEmpty() {
+    return companies.isEmpty();
+}
+
+}

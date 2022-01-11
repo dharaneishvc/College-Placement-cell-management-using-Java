@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class JobList
+public class JobList extends Lists
 {
 
     List<Jobs> jobslist = new ArrayList<>();
@@ -11,8 +11,13 @@ public class JobList
     }
 
     public void printjobs() {
-        for (Jobs job : jobslist) {
-            System.out.println(job.toString());
+        if (jobslist.size() == 0) {
+            System.out.println("No Jobs Available");
+        }
+        else {
+            for (Jobs job : jobslist) {
+                System.out.println(job.toString());
+            }
         }
     }
 
@@ -76,7 +81,7 @@ public class JobList
                 jobs.setJobType(type);
                 jobs.setSalary(salary);
                 jobs.setExperience(experience);
-                System.out.println("Job Details Updated successfully. Try again with correct JobID.");
+                System.out.println("Job Details Updated successfully.");
                 a=1;
             }
         }
@@ -84,6 +89,22 @@ public class JobList
         {
             System.out.println("Job Not Found");
         }
+    }
+
+    public int searchJob(int jobid)
+    {
+        int a=0;
+        for (Jobs jobs : jobslist) {
+            if (jobs.getJobID() == jobid) {
+                a=1;
+                break;
+            }
+        }
+        if(a==0)
+        {
+            System.out.println("Job Not Found");
+        }
+        return a;
     }
 
     public void update(int index, Jobs job) {
@@ -94,7 +115,7 @@ public class JobList
         return jobslist.get(index);
     }
 
-    public int size() {
+    public int getSize() {
         return jobslist.size();
     }
 

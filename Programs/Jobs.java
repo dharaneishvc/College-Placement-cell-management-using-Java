@@ -74,8 +74,18 @@ public class Jobs {
         this.JobDescription = JobDescription;
     }
 
+    @Override
     public String toString() {
-        return "Job\n" + "JobName=" + JobName + ", Salary=" + Salary + ", JobID=" + JobID + ", Experience=" + Experience + ", JobType=" + JobType + ", JobStatus=" + JobStatus + ", JobLocation=" + JobLocation + ", JobDescription=" + JobDescription ;
+        return "Jobs{" +
+                "JobName='" + JobName + '\'' +
+                ", Salary=" + Salary +
+                ", JobID=" + JobID +
+                ", Experience=" + Experience +
+                ", JobType=" + JobType +
+                ", JobStatus=" + JobStatus +
+                ", JobLocation='" + JobLocation + '\'' +
+                ", JobDescription='" + JobDescription + '\'' +
+                '}';
     }
 
 }

@@ -12,7 +12,6 @@ public class Login extends User{
     private String username;
     private String password;
 
-
     User loggedInUser = null;
     List<User> listOfUsers = new ArrayList<>();
 
@@ -28,7 +27,26 @@ public class Login extends User{
         this.password = "";
     }
 
-
+    public boolean checkLogin()
+    {
+        for(User user : listOfUsers)
+        {
+            if(user.getUsername().equals(username) && user.getPassword().equals(password))
+            {
+                loggedInUser = user;
+                return true;
+            }
+        }
+        return false;
+    }
+    public  boolean checkusername(String username){
+        for(User user : listOfUsers){
+            if(user.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
     public void setUsername(String username) {
         this.username = username;
     }
@@ -53,7 +71,7 @@ public class Login extends User{
             System.out.print("Password: ");
             password = reader.readLine();
         } catch (Exception e) {
-            System.out.println("Error reading credentials");
+            System.out.println("Error Reading credentials");
         }
     }
 
@@ -82,6 +100,16 @@ public class Login extends User{
         System.out.println("Logged in user: " + loggedInUser.getUsername());
     }
 
+    public boolean admincheck(){
+        if(loggedInUser.getUsername().equals("user1") || loggedInUser.getUsername().equals("user2") || loggedInUser.getUsername().equals("user3") || loggedInUser.getUsername().equals("user4")|| loggedInUser.getUsername().equals("user5")|| loggedInUser.getUsername().equals("user6")){
+            System.out.println("You are an admin");
+            return true;
+        }
+        else{
+            System.out.println("You are not an admin");
+            return false;
+        }
+    }
     public void printListOfUsers() {
         for (User user : listOfUsers) {
             System.out.println(user.getUsername());

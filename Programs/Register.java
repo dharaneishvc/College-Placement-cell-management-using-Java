@@ -15,24 +15,24 @@ public class Register {
     public Register(String rollNumber, String name, String email, String mobile) {
         this.name = name;
         this.rollNumber = rollNumber;
-        this.email = isEmValid(email);
-        this.mobile = isPhValid(mobile);
+        this.email = email;
+        this.mobile = mobile;
     }
 
     public Register() {
 
     }
 
-    public static String isPhValid(String str) {
+    public static boolean isPhValid(String str) {
         Pattern p = Pattern.compile("(0|91)?[7-9][0-9]{9}");
         Matcher m = p.matcher(str);
-        return (m.find() && m.group().equals(str))? str: "Invalid Mobile Number";
+        return (m.find() && m.group().equals(str))? true: false;
     }
 
-    public static String isEmValid(String str) {
+    public static boolean isEmValid(String str) {
         Pattern p = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
         Matcher m = p.matcher(str);
-        return (m.find() && m.group().equals(str))? str: "Invalid Email";
+        return (m.find() && m.group().equals(str))? true:false;
     }
 
 

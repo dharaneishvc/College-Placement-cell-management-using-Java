@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Driver {
     public static void main(String[] args) {
+        try
         Register register = new Register();
         EducationalDetails ed = new EducationalDetails();
         PersonalDetails pd = new PersonalDetails();
@@ -9,12 +10,20 @@ public class Driver {
         JobList jobList = new JobList();
         CompanyList companyList = new CompanyList();
         Login lgn = new Login(register.getRollNumber(), register.getPassword());
-        int choice = 0;
+        
+        int choice = 0;               
         while(choice!=4) {
             System.out.println("Welcome to Placement Support System");
             System.out.println("Enter 1 - if you are a New User \nEnter 2 - if you are an Existing User \nEnter 3 - if you are an Admin \nEnter 4 - if you want to exit");
             Scanner sc = new Scanner(System.in);
-            choice = sc.nextInt();
+            try
+            {
+                choice = sc.nextInt();
+            } 
+            catch(Exception e)
+            {
+                System.out.println("Some exception occurred. Value Not Integer" + e);
+            }
             while(choice<1 || choice>4)
             {
                 System.out.println("Error. Wrong Input. Enter value bw (1-4):");
@@ -45,7 +54,7 @@ public class Driver {
                         System.out.println("Enter your password.(Press enter at last):");
                         String password = sc.nextLine();
                         register.setPassword(password);
-                        System.out.println("Enter your password again");
+                        System.out.println("Enter your password again.(Press enter at last):");
                         String passwordAgain = sc.nextLine();
                         register.setPasswordAgain(passwordAgain);
                         if (register.getPassword().equals(register.getPasswordAgain())) {

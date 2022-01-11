@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Driver {
     public static void main(String[] args) {
-    
+
         Register register = new Register();
         EducationalDetails ed = new EducationalDetails();
         PersonalDetails pd = new PersonalDetails();
@@ -51,12 +51,19 @@ public class Driver {
                 }
                 {
                     do {
+                        try
+                        {
                         System.out.println("Enter your password.(Press enter at last):");
                         String password = sc.nextLine();
                         register.setPassword(password);
                         System.out.println("Enter your password again.(Press enter at last):");
                         String passwordAgain = sc.nextLine();
                         register.setPasswordAgain(passwordAgain);
+                        }
+                        catch(Exception e)
+                        {
+                            System.out.println("Some error in Input of Passwords. Aborting");
+                        }
                         if (register.getPassword().equals(register.getPasswordAgain())) {
                             System.out.println("Your password has been set");
                             System.out.println("Your College Roll Number will act as your Username");
@@ -137,25 +144,43 @@ public class Driver {
                         System.out.println("Enter 1 to Edit your details\nEnter 2 to See List of Job Opportunities\nEnter 3 to Add Job to Application \nEnter 4 to Remove Job from Application  \nEnter 5 to View Your Job Applications \nEnter 6 to View Companies \nEnter 7 to Logout and Exit");
                         int choice3 = sc.nextInt();
                         if (choice3 == 1) {
-                            System.out.println("1 to View your details\n 2 to Edit your personal details\n 3 to Edit your educational details\n 4 to Reset your password\n Enter:");
+                            System.out.println("Enter 1 to View your details\n Enter 2 to Edit your personal details\n Enter 3 to Edit your educational details\n Enter 4 to Reset your password");
                             int choice4 = sc.nextInt();
                             switch (choice4) {
                                 case 1:
                                     System.out.println("Details of Students \n");
                                     student.showPersonalDetails();
                                     student.showEducationalDetails();
+                                    break;
                                 case 2:
                                     student.showPersonalDetails();
                                     System.out.println("Enter 1 to Edit your Father's Name\nEnter 2 to Edit your Mother's Name\nEnter 3 to Edit your Date of Birth\nEnter 4 to Edit your Address\nEnter 5 to Edit your City\nEnter 6 to Edit your State\nEnter 7 to Edit your Country\nEnter 8 to Edit your Pincode");
-                                    int choice5 = sc.nextInt();
-                                    student.editPersonalDetails(choice5);
-                                    break;
+                                    try
+                                    {   
+                                        int choice5 = sc.nextInt();
+                                        student.editPersonalDetails(choice5);
+                                        break;
+                                    }
+                                    catch(Exception e)
+                                    {
+                                        System.out.println("Type mismatch or Some Exception happened. Aborting"+e);
+                                        break;
+                                    }
+                                    
                                 case 3:
                                     student.showEducationalDetails();
                                     System.out.println("Enter 1 to Edit your Department\nEnter 2 to Edit your Branch\nEnter 3 to Edit your Year of Study\nEnter 4 to Edit your CGPA\nEnter 5 to Edit your Section\nEnter 6 to Edit your 10th Percentage\nEnter 7 to Edit your 12th Percentage");
+                                    try
+                                    {
                                     int choice6 = sc.nextInt();
                                     student.editEducationalDetails(choice6);
                                     break;
+                                    }
+                                    catch(Exception e)
+                                    {
+                                        System.out.println("Type mismatch or Some Exception happened. Aborting"+e);
+                                        break;
+                                    }
                                 case 4:
                                     student.resetPassword();
                                     break;
@@ -167,15 +192,28 @@ public class Driver {
                         }
                         else  if(choice3==3){
                             System.out.println("Enter the Job ID you want to add to your Job Application");
+                            try
+                            {
                             int jobId1 =sc.nextInt();
                             Jobs job1=jobList.getJob(jobId1);
                             student.addJob(job1);
+                            }
+                            catch(Exception e)
+                            {
+                                System.out.println("Type mismatch or Some Exception happened. Aborting"+e);
+                            }
                         }
                         else if(choice3==4){
                             System.out.println("Enter the Job ID you want to remove from your Job Application");
+                        try{    
                             int jobId2 =sc.nextInt();
                             Jobs job2=jobList.getJob(jobId2);
                             student.removeJob(job2);
+                        }
+                        catch(Exception e)
+                        {
+                            System.out.println("Type mismatch or Some Exception happened. Aborting"+e);
+                        }
                         }
                         else  if(choice3 == 5){
 //
@@ -197,8 +235,11 @@ public class Driver {
                 if (lgn.checkCredentials()) {
                     lgn.printLoggedInUser();
                     do {
-                        System.out.println("Enter 1 to view Users List \nEnter 2 to view Job Lists \nEnter 3 to view Company Lists \nEnter 4 to Add Job \nEnter 5 to Add Company \nEnter 6 to Remove Job \nEnter 7 to Remove Company \nEnter 8 to Logout");
-                        int choice4 = sc.nextInt();
+                        int choice4;
+                        System.out.println("Enter 1 to view Users List \nEnter 2 to view Job Lists \nEnter 3 to view Company Lists \nEnter 4 to Add Job \nEnter 5 to Add Company \nEnter 6 to Remove Job \nEnter 7 to Remove Company \nEnter 8 to Logout");  
+                        try
+                        {
+                            choice4 = sc.nextInt();
                         if (choice4 == 1) {
                             lgn.printListOfUsers();
                         } else if (choice4 == 2) {
@@ -270,6 +311,12 @@ public class Driver {
                             System.out.println("Logged Out Successfully");
                             break;
                         }
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("Type mismatch or Some Exception happened. Aborting"+e);
+                    }
+
                     } while (true);
                 }
                 else

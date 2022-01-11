@@ -26,14 +26,19 @@ public class CompanyList
 
     public void removeCompany(String companyID)
     {
+        int a=0;
         for (Company company : companies)
-        {
+        { 
             if(company.getCompany_ID().equals(companyID))
             {
                 companies.remove(company);
+                System.out.println("Company Deleted successfully");
+                a=1;
                 break;
             }
         }
+        if(a==0)
+        System.out.println("Company Not Found");
     }
 
     public Company getCompany(String companyID)
@@ -62,14 +67,21 @@ public class CompanyList
 
     public void updateCompany(String companyID, String companyName, String companyAddress)
     {
+        int a=0;
         for(Company company : companies)
         {
             if(company.getCompany_ID().equals(companyID))
             {
                 company.setCompany_Name(companyName);
                 company.setCompany_Address(companyAddress);
+                System.out.println("Company Updated successfully");
+                a=1;
                 break;
             }
+        }
+        if(a==0)
+        {
+            System.out.println("Company Not Found");
         }
     }
 

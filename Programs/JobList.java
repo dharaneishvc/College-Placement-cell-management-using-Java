@@ -46,11 +46,18 @@ public class JobList
     }
 
     public void removeJob(int jobid) {
+        int a=0;
         for (int i = 0; i < jobslist.size(); i++) {
             if (jobslist.get(i).getJobID() == jobid)
             {
                 jobslist.remove(i);
+                System.out.println("Job Deleted successfully");
+                a=1;
             }
+        }
+        if(a==0)
+        {
+            System.out.println("Job Not Found. Try again with correct JobID.");
         }
     }
 
@@ -60,6 +67,7 @@ public class JobList
 
     public void updateJob(int job, String title, String description, String location, int type, float salary,int experience)
     {
+        int a=0;
         for (Jobs jobs : jobslist) {
             if (jobs.getJobID() == job) {
                 jobs.setJobName(title);
@@ -68,7 +76,13 @@ public class JobList
                 jobs.setJobType(type);
                 jobs.setSalary(salary);
                 jobs.setExperience(experience);
+                System.out.println("Job Details Updated successfully. Try again with correct JobID.");
+                a=1;
             }
+        }
+        if(a==0)
+        {
+            System.out.println("Job Not Found");
         }
     }
 

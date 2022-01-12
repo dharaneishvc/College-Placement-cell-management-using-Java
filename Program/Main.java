@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class Driver {
+public class Main {
     public static void main(String[] args) {
         Register register = new Register();
         EducationalDetails ed = new EducationalDetails();

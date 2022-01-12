@@ -162,9 +162,18 @@ public class Driver {
                     lgn.printLoggedInUser();
                     Student student = new Student(pd, ed, register, user);
                     int choice3=0;
-                    while(choice3 != 7) {
+                    while(choice3 != 8) {
                         System.out.println("Enter 1 to Edit your details\nEnter 2 to See List of Job Opportunities\nEnter 3 to Add Job to Application \nEnter 4 to Remove Job from Application  \nEnter 5 to View Your Job Applications \nEnter 6 to View Companies \nEnter 7 to print applied jobs \nEnter 8 to Logout");
-                        choice3 = sc.nextInt();
+                        try{
+                            choice3 = sc.nextInt();
+                        }
+                        catch(Exception e)
+                        {
+                            System.out.println("Some exception occured"+e);
+                            choice3=8;
+                            continue;
+                        }
+
                         while(choice3>8 || choice3<1)
                         {
                             System.out.println("Error. Enter correct value (1-7):");
@@ -224,7 +233,10 @@ public class Driver {
                             {
                             int jobId1 =sc.nextInt();
                             Jobs job1=jobList.getJob(jobId1);
+                            if(job1 != null)
                             student.addJob(job1);
+                            else
+                            System.out.println("Job Not Found");
                             }
                             catch(Exception e)
                             {
@@ -256,8 +268,7 @@ public class Driver {
                                 BufferedWriter bw = new BufferedWriter(fw);
                                 for(int i=0;i<student.jobs.size();i++) {
                                     bw.write(student.jobs.get(i).toString());
-                                    bw.close();
-                                }
+                                } bw.close();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
